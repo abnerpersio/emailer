@@ -14,3 +14,6 @@ Este é um serviço de emails simples que usa um sistema de filas para fazer dis
 - Nodemailer
 - Redis
 - Bull
+
+
+#### This is a working in progress project, I am acception suggestions for features and improvements :)
