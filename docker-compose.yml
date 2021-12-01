@@ -4,12 +4,11 @@ services:
   api:
     container_name: api-emailer
     build: .
-    env_file: .env
-    environment:
-      PORT: 80
+    env_file: .env.production
     ports:
       - "8000:80"
-    command: npm run queue:mailer
+    volumes: 
+      - .:/usr/src/app
       
   redis:
     container_name: redis-emailer

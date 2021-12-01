@@ -1,8 +1,12 @@
-const queue = require('./index');
+const MailService = require('../../services/MailService');
+const { queue } = require('./index');
 
-queue.process(function (job, done) {
+queue.process(async (job, done) => {
+  console.log(`processing job with id ${job.data.id}`);
 
-  console.log('job rodado', job.data);
+  const response = await MailService.sendEmail(job.data?.email);
+
+  console.log('processed job', response);
+
   done();
-
 });

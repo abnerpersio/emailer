@@ -4,12 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "queue:mailer": "node src/jobs/mailer/run.js"
   },
   "dependencies": {
     "bull": "^4.1.1",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "nodemailer": "^6.7.2"
+    "express-async-errors": "^3.1.1",
+    "nodemailer": "^6.7.2",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "nodemon": "^2.0.15"
   }
 }
