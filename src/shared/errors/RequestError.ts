@@ -1,5 +1,7 @@
 class RequestError extends Error {
-  constructor(message, code) {
+  code;
+
+  constructor(message: string, code: number) {
     super(message);
 
     this.code = code;
@@ -10,4 +12,4 @@ class RequestError extends Error {
   }
 }
 
-module.exports = RequestError;
+export default RequestError;

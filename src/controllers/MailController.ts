@@ -1,16 +1,21 @@
-const { addQueue } = require('../jobs/mailer');
-const RequestError = require('../shared/errors/RequestError');
+import { Request, Response } from "express";
+
+import { addQueue } from '../jobs/mailer';
+import RequestError from '../shared/errors/RequestError';
 
 class MailController {
-  validate = (data, validations) => {
+  validate = (data: any, validations: string[]) => {
     validations.forEach((item) => {
       if (!data || !data[item]) {
-        throw new RequestError(`Invalid value "${data[item]}" for "${item}" field`, 400);
+        throw new RequestError(
+          `Invalid value "${data[item]}" for "${item}" field`,
+          400,
+        );
       }
     });
   };
 
-  store = (req, res) => {
+  store = (req: Request, res: Response) => {
     this.validate(req.body, ['subject', 'to', 'text', 'html']);
 
     addQueue({
@@ -27,4 +32,4 @@ class MailController {
   };
 }
 
-module.exports = new MailController();
+export default new MailController();

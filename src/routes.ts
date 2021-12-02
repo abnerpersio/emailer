@@ -1,10 +1,10 @@
-const express = require('express');
+import express from 'express';
 
-const MailController = require('./controllers/MailController');
+import MailController from './controllers/MailController';
 
 const routes = express.Router();
 
 routes.get('/', (req, res) => res.send('Ok here!'));
 routes.post('/mail', MailController.store);
 
-module.exports = routes;
+export default routes;

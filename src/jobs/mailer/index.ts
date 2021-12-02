@@ -1,6 +1,9 @@
-require('dotenv').config();
-const Queue = require('bull');
-const { v4: uuid } = require('uuid');
+import { config } from 'dotenv';
+
+import Queue from 'bull';
+import { v4 as uuid } from 'uuid';
+
+config();
 
 const REDIS_HOST = process.env.REDIS_HOST ?? 'redis';
 
@@ -11,14 +14,14 @@ const queue = new Queue('mailer', {
   },
 });
 
-function addQueue(data) {
+function addQueue(data: any) {
   queue.add({
     id: uuid(),
     email: data,
   });
 }
 
-module.exports = {
+export {
   queue,
   addQueue,
 };

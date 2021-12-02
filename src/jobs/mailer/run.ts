@@ -1,5 +1,5 @@
-const MailService = require('../../services/MailService');
-const { queue } = require('./index');
+import MailService from '../../services/MailService';
+import { queue } from './index';
 
 queue.process(async (job, done) => {
   console.log(`processing job with id ${job.data.id}`);

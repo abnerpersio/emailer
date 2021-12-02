@@ -1,6 +1,7 @@
-const RequestError = require('../shared/errors/RequestError');
+import { NextFunction, Request, Response } from "express";
+import RequestError from '../shared/errors/RequestError';
 
-function ErrorHandler(error, req, res, next) {
+export default function ErrorHandler(error: Error, req: Request, res: Response, next: NextFunction) {
   console.log(error);
 
   if (error instanceof RequestError) {
@@ -22,4 +23,3 @@ function ErrorHandler(error, req, res, next) {
   });
 }
 
-module.exports = ErrorHandler;
