@@ -1,7 +1,8 @@
-import { IEmail } from "../shared/interfaces/email.interface";
-
-require('dotenv').config();
+import { config } from 'dotenv';
 import nodemailer from 'nodemailer';
+import { IEmail } from '../shared/interfaces/email.interface';
+
+config();
 
 const { MAILER_USER } = process.env;
 const { MAILER_PASS } = process.env;
@@ -10,8 +11,8 @@ const { DEFAULT_EMAIL_SENDER } = process.env;
 const client = nodemailer.createTransport({
   auth: {
     user: MAILER_USER,
-    pass: MAILER_PASS   
-  }
+    pass: MAILER_PASS,
+  },
 });
 
 class MailService {
