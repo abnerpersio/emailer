@@ -10,6 +10,7 @@ Este é um serviço de emails simples que usa um sistema de filas para fazer dis
 ### Tecnologias usadas:
 
 - Node.JS
+- Typescript
 - Express
 - Nodemailer
 - Redis
