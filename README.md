@@ -2,9 +2,14 @@
 
 Este é um serviço de emails simples que usa um sistema de filas para fazer disparos de emails
 
+### Features existentes:
+
+- Docker
+- Enviar um email
+- Envio de email em lote
+
 ### Futuras features:
 
-- Envio de email em lote
 - Criação de templates HTML para envio
 
 ### Tecnologias usadas:
