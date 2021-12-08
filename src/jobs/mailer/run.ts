@@ -6,7 +6,7 @@ queue.process(async (job, done) => {
 
   const response = await MailService.sendEmail(job.data?.email);
 
-  console.log('processed job', response);
+  console.log(`processed job ${job.data.id} and sent message ${response?.messageId}`);
 
   done();
 });

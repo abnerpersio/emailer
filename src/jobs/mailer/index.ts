@@ -15,7 +15,7 @@ const queue = new Queue('mailer', {
 });
 
 function addQueue(data: any) {
-  queue.add({
+  return queue.add({
     id: uuid(),
     email: data,
   });

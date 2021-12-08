@@ -4,11 +4,11 @@ import { IEmail } from '../shared/interfaces/email.interface';
 
 config();
 
-const { MAILER_USER } = process.env;
-const { MAILER_PASS } = process.env;
+const { MAILER_USER, MAILER_PASS, MAILER_SMTP } = process.env;
 const { DEFAULT_EMAIL_SENDER } = process.env;
 
 const client = nodemailer.createTransport({
+  host: MAILER_SMTP,
   auth: {
     user: MAILER_USER,
     pass: MAILER_PASS,
