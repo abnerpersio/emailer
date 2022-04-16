@@ -1,6 +1,6 @@
 import { config } from 'dotenv';
 import nodemailer from 'nodemailer';
-import { IEmail } from '../shared/interfaces/email.interface';
+import { Email } from '../shared/interfaces/email.interface';
 
 config();
 
@@ -16,7 +16,7 @@ const client = nodemailer.createTransport({
 });
 
 class MailService {
-  formatEmail(data: IEmail) {
+  formatEmail(data: Email) {
     return {
       subject: data.subject,
       from: DEFAULT_EMAIL_SENDER,
@@ -26,7 +26,7 @@ class MailService {
     };
   }
 
-  async sendEmail(data: IEmail) {
+  async sendEmail(data: Email) {
     const emailConfig = this.formatEmail(data);
     return client.sendMail(emailConfig);
   }

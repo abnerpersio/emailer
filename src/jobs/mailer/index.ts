@@ -7,21 +7,16 @@ config();
 
 const REDIS_HOST = process.env.REDIS_HOST ?? 'redis';
 
-const queue = new Queue('mailer', {
+export const queue = new Queue('mailer', {
   redis: {
     port: 6379,
     host: REDIS_HOST,
   },
 });
 
-function addQueue(data: any) {
+export function addQueue(data: any) {
   return queue.add({
     id: uuid(),
     email: data,
   });
 }
-
-export {
-  queue,
-  addQueue,
-};

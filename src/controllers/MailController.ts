@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 
 import { addQueue } from '../jobs/mailer';
-import Controller from '../shared/interfaces/controller';
-import { IEmail } from '../shared/interfaces/email.interface';
+import { Email } from '../shared/interfaces/email.interface';
+
+import { Controller } from '../shared/interfaces/controller';
 
 class MailController extends Controller {
-  store = async (req: Request, res: Response) => {
+  send = async (req: Request, res: Response) => {
     this.validate(req.body, ['subject', 'to', 'text', 'html']);
 
     await addQueue({
@@ -14,20 +15,17 @@ class MailController extends Controller {
       text: req.body.text,
       html: req.body.html,
     });
-
     res.json({
       success: true,
       message: 'Email added to queue',
     });
   };
 
-  storeBatch = async (req: Request, res: Response) => {
-    req.body?.forEach(
-      (item: IEmail) => this.validate(item, ['subject', 'to', 'text', 'html']),
-    );
+  sendBatch = async (req: Request, res: Response) => {
+    req.body?.forEach((item: Email) => this.validate(item, ['subject', 'to', 'text', 'html']));
 
     await Promise.all(
-      req.body?.map(async (item: IEmail) => {
+      req.body?.map(async (item: Email) => {
         await addQueue({
           subject: item.subject,
           to: item.to,

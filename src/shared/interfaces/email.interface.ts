@@ -1,5 +1,4 @@
-
-export interface IEmail  {
+export interface Email {
   subject?: string;
   from?: string;
   to?: string;
@@ -7,7 +6,7 @@ export interface IEmail  {
   html?: string;
 }
 
-export interface IEmailJob {
+export interface EmailJob {
   id: string;
-  data?: IEmail;
+  data?: Email;
 }
