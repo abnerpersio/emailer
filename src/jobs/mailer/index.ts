@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 
 import Queue from 'bull';
 import { v4 as uuid } from 'uuid';
+import { Email } from '../../shared/interfaces/email.interface';
 
 config();
 
@@ -14,7 +15,7 @@ export const queue = new Queue('mailer', {
   },
 });
 
-export function addQueue(data: any) {
+export function addQueue(data: Email) {
   return queue.add({
     id: uuid(),
     email: data,

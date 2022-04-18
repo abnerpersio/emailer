@@ -8,4 +8,6 @@ aws.config.credentials = new aws.Credentials({
   secretAccessKey: process.env.AWS_ACCESS_TOKEN || '',
 });
 
-export default aws;
+export const ses = new aws.SES({ apiVersion: '2010-12-01' });
+
+export const AWS_EMAIL_SENDER = process.env.AWS_EMAIL_SENDER as string;
